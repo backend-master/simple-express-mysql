@@ -1,4 +1,4 @@
-# Express CRUD with MySql
+# Integrate Express with MySql
 
 Connecting our Express app with MySql Database.
 
