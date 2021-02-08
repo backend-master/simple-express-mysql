@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  server:
+    container_name: server
+    build: ./
+    volumes:
+      - ./:/server
+    ports:
+      - 5000:5000
+    stdin_open: true
+    command: yarn start
+    environment:
+      - MYSQL_HOST=mysql-test
+      - MYSQL_USER=moeuser
+      - MYSQL_PASS=moepass
+      - MYSQL_DB=moe_db
+    depends_on:
+      - mysql-test
+  mysql-test:
+    image: mysql:5.7
+    container_name: mysql-test
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3389:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=moeuser
+      - MYSQL_PASSWORD=moepass
+      - MYSQL_DATABASE=moe_db
