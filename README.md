@@ -14,6 +14,8 @@ or using yarn:
 yarn
 ```
 
+Updated : to run this project, you just need type `docker-compose up -d` on your terminal
+
 This project structure will be like this :
 
 ```sh
