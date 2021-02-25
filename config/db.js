@@ -1,15 +1,24 @@
-require('dotenv').config();
+require('dotenv').config()
 
-const mysql = require('mysql');
+const mysql = require('mysql')
 
-console.log(process.env);
+const configMs = {
+  server: 'localhost',
+  user: 'sa',
+  password: '123p@ssword',
+  database: 'TestDB'
+}
+
+const configMy = {
+  host: 'localhost',
+  user: 'root',
+  password: 'password123',
+  database: 'klink',
+  port: '3306'
+}
 
 const db = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASS,
-  database: process.env.MYSQL_DB,
-  port: process.env.MYSQL_PORT,
+  ...configMy
 });
 
 db.connect((err) => {
@@ -19,4 +28,7 @@ db.connect((err) => {
   }
 });
 
-module.exports = db;
+module.exports = {
+  configMs,
+  db
+}
